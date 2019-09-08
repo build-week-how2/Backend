@@ -2,6 +2,8 @@ const express = require("express");
 const cors = require("cors");
 const helmet = require("helmet");
 
+const usersRouter = require("../users/users-router");
+
 const server = express();
 
 server.use(helmet());
@@ -12,4 +14,5 @@ server.get("/", (req, res) => {
   res.status(200).json({ api: "Ready to go" });
 });
 
+server.use("/api/users", usersRouter);
 module.exports = server;
