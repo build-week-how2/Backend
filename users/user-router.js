@@ -5,11 +5,14 @@ const Users = require('./user-model.js');
 
 const router = express.Router();
 
-router.get('/', async (req, res) => {
-    try {
-        const users = await Users.find()
+router.get('/', (req, res) => {
+    const users = Users.find()
+    .then (users => {
         res.json(users)
-    } catch(err) {
-        res.status(500).json({message: 'Failed to to get users'})
-    }
+    })
+    .catch(err => {
+        res.status(500).json({message: 'Failed to get users'})
+    })
 })
+
+module.exports = router

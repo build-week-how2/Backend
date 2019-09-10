@@ -2,7 +2,7 @@ const express = require("express");
 const cors = require("cors");
 const helmet = require("helmet");
 
-const userRouter = require("../users/user-router");
+const userRouter = require("../users/user-router.js");
 
 const server = express();
 
