@@ -15,24 +15,38 @@ router.get('/', (req, res) => {
     })
 })
 
-router.get('/:id', (req, res) => {
-    const [id] = req.params
-    const howTo = HowTos.findById(id);
+// router.get('/:id', (req, res) => {
+//     const [id] = req.params
+//     const howTo = HowTos.findById(id);
 
-    .then(howTo => {
-        const howTo = howTos[0];
+//     .then(howTo => {
+//         const howTo = howTos[0];
+
+//         if(howTo) {
+//             res.json(howTo)
+//         } else {
+//             res.status(404).json({message: 'Could not find How To guide with that id'})
+//         }
+//     })
+//     .catch(err => {
+//         res.status(500).json({message: 'failed to get How To guide'})
+//     })
+// })
+
+router.get('/:id', async (req, res) => {
+    const {id} = req.params;
+
+    try {
+        const [howTo] = await HowTos.findById(id)
 
         if(howTo) {
             res.json(howTo)
         } else {
-            res.status(404).json({message: 'Could not find How To guide with that id'})
+            res.status(404).json({message: 'Could not find the How To guide with the given id'})
         }
-    })
-    .catch(err => {
-        res.status(500).json({message: 'failed to get How To guide'})
-    })
+    } catch(err) {
+        res.status(500).json({message: 'Failes to get that How To guide'})
+    }
 })
-
-
 
 module.exports = router
