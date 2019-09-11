@@ -3,7 +3,7 @@ const db = require('../database/dbConfig.js')
 module.exports = {
     find,
     findById,
-    // findMethods,
+    findMethods,
     // add,
     // update,
     // remove
@@ -18,3 +18,6 @@ function findById(id) {
         .where({id})
 }
 
+function findMethods(howto_id) {
+    return db()
+}
