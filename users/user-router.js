@@ -45,7 +45,18 @@ router.get('/:id', async (req, res) => {
             res.status(404).json({message: 'Could not find the How To guide with the given id'})
         }
     } catch(err) {
-        res.status(500).json({message: 'Failes to get that How To guide'})
+        res.status(500).json({message: 'Failed to get that How To guide'})
+    }
+})
+
+router.get('/:id/methods', async (req, res) => {
+    const {id} = req.params;
+
+    try {
+        const methods = await HowTos.findMethods(id)
+        res.json(methods)
+    } catch(err) {
+        res.status(500).json({message: 'Failed to get methods'})
     }
 })
 
