@@ -1,45 +1,43 @@
-const db = require('../database/dbConfig.js')
+const db = require("../database/dbConfig.js");
 
 module.exports = {
-    find,
-    findById,
-    findMethods,
-    add,
-    update,
-    remove
-}
+  find,
+  findById,
+  findMethods,
+  add,
+  update,
+  remove
+};
 
 function find() {
-    return db('howTos')
+  return db("howTos");
 }
 
 function findById(id) {
-    return db('howTos')
-        .where({id})
+  return db("howTos").where({ id });
 }
 
-function findMethods(howto_id) {
-    return db('methods as m')
-        .join('howTos as h', 'h.id', 'm.howto_id')
-        .select('m.id', 'h.howTo_name', 'm.description')
-        .where({howto_id})
+function findMethods(id) {
+  return db("methods as m")
+    .join("howTos as h", "h.id", "m.id")
+    .select("m.id", "h.howTo_Name", "m.method_name", "m.Description")
+    .where("h.id", id);
 }
 
-function add(howTo) {
-    const [id] = db('howTos')
-        .insert(howTo)
-    
-    return findById(id)
+async function add(howTo) {
+  const [id] = await db("howTos").insert(howTo);
+
+  return findById(id);
 }
 
-function update(id) {
-    return db('howTos')
-        .where({id})
-        .update(id)
+function update(id, changes) {
+  return db("howTos")
+    .where("id", id)
+    .update(changes);
 }
 
 function remove(id) {
-    return db('howTos')
-        .where({id})
-        .del()
+  return db("howTos")
+    .where("id", id)
+    .del();
 }
