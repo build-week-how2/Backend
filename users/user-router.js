@@ -43,8 +43,7 @@ router.get("/:id", async (req, res) => {
       res.json(howTo);
     } else {
       res
-        .status(404)
-        .json({ message: "Could not find the How To guide with the given id" });
+        .status(404).json({ message: "Could not find the How To guide with the given id" });
     }
   } catch (err) {
     res.status(500).json({ message: "Failed to get that How To guide" });
@@ -72,7 +71,7 @@ router.post("/", async (req, res) => {
   } catch (err) {
     res
       .status(500)
-      .json({ message: "Failed to create new How To", error: err.message });
+      .json({ message: "Failed to create new How To" });
   }
 });
 
