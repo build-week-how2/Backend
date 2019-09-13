@@ -22,7 +22,7 @@ function findMethods(id) {
   return db("methods as m")
     .join("howTos as h", "h.id", "m.id")
     .select("m.id", "h.howTo_Name", "m.method_name", "m.Description")
-    .where("h.id", id);
+    .where({howTo_id});
 }
 
 async function add(howTo) {
@@ -33,12 +33,12 @@ async function add(howTo) {
 
 function update(id, changes) {
   return db("howTos")
-    .where("id", id)
+    .where({id})
     .update(changes);
 }
 
 function remove(id) {
   return db("howTos")
-    .where("id", id)
+    .where({id})
     .del();
 }
