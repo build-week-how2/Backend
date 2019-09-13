@@ -72,7 +72,7 @@ router.post("/", async (req, res) => {
   } catch (err) {
     res
       .status(500)
-      .json({ message: "Failed to create new Hot To", error: err.message });
+      .json({ message: "Failed to create new How To", error: err.message });
   }
 });
 
@@ -81,7 +81,7 @@ router.put("/:id", async (req, res) => {
   if (change) {
     res.status(200).json(change);
   } else {
-    res.status(500).json({ message: "The change could not take place" });
+    res.status(500).json({ message: "Could not change that How To guide" });
   }
 });
 
