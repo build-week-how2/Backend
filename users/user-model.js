@@ -16,6 +16,7 @@ function find() {
 function findById(id) {
   return db("howTos")
     .where({ id })
+    .first();
 }
 
 function findMethods(id) {
