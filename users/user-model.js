@@ -24,7 +24,8 @@ function findMethods(id) {
   return db("methods as m")
     .join("howTos as h", "h.id", "m.id")
     .select("m.id", "h.howTo_Name", "m.method_name", "m.Description")
-    .where({howTo_id});
+    .where("h.id", id)
+
 }
 
 async function add(howTo) {
