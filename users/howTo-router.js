@@ -101,7 +101,8 @@ router.delete("/:id", (req, res) => {
 });
 
 router.post("/upload", (req, res) => {
-  console.log(req.files);
+  const file = req.files.photo;
+  file.mv("./uploads/" + file.name);
   res.send({ message: "uploaded" });
 });
 module.exports = router;
