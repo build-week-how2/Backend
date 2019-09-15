@@ -14,7 +14,7 @@ const sessionOptions = {
   name: "sessioncookie",
   secret: "cookies for the sessions",
   cookie: {
-    maxAge: 1000 * 60,
+    maxAge: 1000 * 60 * 60,
     secure: false,
     httpOnly: true
   },
