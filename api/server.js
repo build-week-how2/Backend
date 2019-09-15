@@ -1,9 +1,9 @@
-const session = require("express-session");
-const knexSessionStore = require("connect-session-knex")(session);
 const express = require("express");
 const cors = require("cors");
 const helmet = require("helmet");
 
+const session = require("express-session");
+const knexSessionStore = require("connect-session-knex")(session);
 const authRouter = require("../auth/auth-router");
 const userRouter = require("../users/user-router.js");
 const auth = require("../auth/auth-middleware");
@@ -41,4 +41,6 @@ server.get("/", (req, res) => {
 
 server.use("/api/auth", authRouter);
 server.use("/api/users", auth, userRouter);
+
+
 module.exports = server;
