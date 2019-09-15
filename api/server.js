@@ -3,7 +3,7 @@ const knexSessionStore = require("connect-session-knex")(session);
 const express = require("express");
 const cors = require("cors");
 const helmet = require("helmet");
-const fileupload = require("express-fileupload");
+const fileUpload = require("express-fileupload");
 
 const authRouter = require("../auth/auth-router");
 const userRouter = require("../users/howTo-router");
@@ -33,7 +33,7 @@ const sessionOptions = {
 
 server.use(helmet());
 server.use(cors());
-server.use(fileupload());
+server.use(fileUpload());
 server.use(express.json());
 server.use(session(sessionOptions));
 
