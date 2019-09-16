@@ -1,11 +1,12 @@
 const express = require("express");
 const cors = require("cors");
 const helmet = require("helmet");
+const fileUpload = require("express-fileupload");
 
 const session = require("express-session");
 const knexSessionStore = require("connect-session-knex")(session);
 const authRouter = require("../auth/auth-router");
-const userRouter = require("../users/user-router.js");
+const userRouter = require("../users/howTo-router");
 const auth = require("../auth/auth-middleware");
 
 const server = express();
@@ -32,6 +33,7 @@ const sessionOptions = {
 
 server.use(helmet());
 server.use(cors());
+server.use(fileUpload());
 server.use(express.json());
 server.use(session(sessionOptions));
 
@@ -40,7 +42,5 @@ server.get("/", (req, res) => {
 });
 
 server.use("/api/auth", authRouter);
-server.use("/api/users", auth, userRouter);
-
-
+server.use("/api/howTo", auth, userRouter);
 module.exports = server;
