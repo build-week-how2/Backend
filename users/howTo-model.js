@@ -33,12 +33,12 @@ async function add(howTo) {
 
 function update(id, changes) {
   return db("howTos")
-    .where("id", id)
+    .where({ id })
     .update(changes);
 }
 
 function remove(id) {
   return db("howTos")
-    .where("id", id)
+    .where({ id })
     .del();
 }

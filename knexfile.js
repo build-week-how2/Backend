@@ -4,10 +4,12 @@ module.exports = {
     connection: {
       filename: "./database/howToo.db3"
     },
+
     useNullAsDefault: true,
     migrations: {
       directory: "./database/migrations"
     },
+
     pool: {
       afterCreate: (conn, done) => {
         conn.run("PRAGMA foreign_keys = ON", done);
